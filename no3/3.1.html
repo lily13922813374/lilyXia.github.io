@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<style>
+		.box{
+			width: 800px;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+		    <label for="inputIdcard3" class="col-sm-2 control-label">身份证号</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="inputIdcard3" placeholder="Idcard">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">密码:</label>
+		    <div class="col-sm-10">
+		      <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword4" class="col-sm-2 control-label">确认密码:</label>
+		    <div class="col-sm-10">
+		      <input type="password" class="form-control" id="inputPassword4" placeholder="再次输入密码">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <div class="checkbox">
+		        <label>
+		          <input type="checkbox">记住我
+		        </label>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Sign in</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <!-- integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous" -->
+<script>
+	$('#inputIdcard3').blur(function (){
+		if (this.value) {
+
+		};
+	})
+
+/** 验证邮箱 **/ 
+function validateEmailFiled(obj,param,description){ 
+	if(param.errorCount == 0 && obj.val().length > 0){ 
+		var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/ if(!reg.test(obj.val())){
+			param.errorCount = param.errorCount + 1; floatNotify.simple(description); } 
+			}else{ param.errorCount = param.errorCount + 1; floatNotify.simple(description); 
+			} 
+	}
+
+
+
+	/** 倒计时函数 **/ 
+	function mycountDown(obj,second){ // 如果秒数还是大于0，则表示倒计时还没结束 
+		if(second>=0){ // 按钮置为不可点击状态 
+			$(obj).attr('disabled', true) // 按钮里的内容呈现倒计时状态 
+			$(obj).val("发送短信中"+'('+second+')') // 时间减一 second--; // 一秒后重复执行 setTimeout(function(){mycountDown(obj,second);},1000); 
+		}else{// 否则，按钮重置为初始状态 // 按钮置未可点击状态 
+			$(obj).attr('disabled', false) // 按钮里的内容恢复初始状态 
+			$(obj).val("获取手机验证码") 
+		} 
+	}
+</script>
+</body>
+</html>
